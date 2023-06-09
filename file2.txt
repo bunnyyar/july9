@@ -1,0 +1,52 @@
+const http = require('http');
+
+// Create a server
+const server = http.createServer((req, res) => {
+  // Set the response header
+  res.setHeader('Content-Type', 'text/plain');
+  
+  // Handle different routes
+  if (req.url === '/') {
+    res.end('Welcome to the homepage!');
+  } else if (req.url === '/about') {
+    res.end('About us page');
+  } else if (req.url === '/contact') {
+    res.end('Contact us page');
+  } else {
+    res.statusCode = 404;
+    res.end('Page not found');
+  }
+});
+
+// Start the server
+server.listen(3000, 'localhost', () => {
+  console.log('Server running on port 3000');
+});
+
+// Define a function
+function greet(name) {
+  console.log(`Hello, ${name}!`);
+}
+
+// Call the function
+greet('John');
+
+// Define a class
+class Person {
+  constructor(name, age) {
+    this.name = name;
+    this.age = age;
+  }
+  
+  getInfo() {
+    return `Name: ${this.name}, Age: ${this.age}`;
+  }
+}
+
+// Create an object of the class
+const person = new Person('Alice', 25);
+console.log(person.getInfo());
+
+// Use a built-in module
+const os = require('os');
+console.log(`Operating System: ${os.platform()}, Architecture: ${os.arch()}`);
